@@ -52,6 +52,7 @@
 #include "ptk/widgets/Image.hpp"
 #include "ptk/widgets/Label.hpp"
 #include "ptk/widgets/Rectangle.hpp"
+#include "ptk/widgets/ScrollArea.hpp"
 #include "ptk/widgets/VBox.hpp"
 
 

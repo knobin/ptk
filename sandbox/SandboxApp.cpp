@@ -134,6 +134,26 @@ int main(int argc, char *argv[])
 		cStatus->setText(statusText);
 		return true;
 	});
+
+    // ScrollArea Content
+    pTK::Ref<pTK::Rectangle> rect1 = pTK::create<pTK::Rectangle>();
+    rect1->setColor(pTK::Color(0xF9C6D7FF));
+    rect1->setConstSize({ 250, 125 });
+    rect1->onScroll([](const pTK::Vec2f&) {
+        return true;
+    });
+    pTK::Ref<pTK::Rectangle> rect2 = pTK::create<pTK::Rectangle>();
+    rect2->setColor(pTK::Color(0xDB4C77FF));
+    rect2->setConstSize({ 250, 125 });
+    pTK::Ref<pTK::Rectangle> rect3 = pTK::create<pTK::Rectangle>();
+    rect3->setColor(pTK::Color(0xCFC7F7FF));
+    rect3->setConstSize({ 250, 125 });
+
+    pTK::Ref<pTK::ScrollArea> cScrollArea = pTK::create<pTK::ScrollArea>();
+    cScrollArea->setBackground(pTK::Color(0xA5A5A5FF));
+    cScrollArea->add(rect1);
+    cScrollArea->add(rect2);
+    cScrollArea->add(rect3);
     
     // Add content to sidebar.
     sidebar->add(sTitle);
@@ -141,6 +161,13 @@ int main(int argc, char *argv[])
     sidebar->add(b2);
     sidebar->add(b3);
     sidebar->add(b4);
+
+    pTK::Ref<pTK::Label> label = pTK::create<pTK::Label>();
+    label->setText("Bottom label");
+    label->setFontSize(25);
+    label->setPadding({ 18, 9, 18, 18 });
+    label->setColor(pTK::Color());
+    label->setAlign(pTK::Align::Left | pTK::Align::Bottom);
 
     // Set Maxsize of sidebar.
     sidebar->setMaxSize({sidebar->getSize().width, pTK::Size::Limits::Max});
@@ -151,6 +178,8 @@ int main(int argc, char *argv[])
     content->add(rect);
 	content->add(checkbox);
 	content->add(cStatus);
+    content->add(cScrollArea);
+    content->add(label);
     
     // Add content to hbox.
     hbox->add(sidebar);
